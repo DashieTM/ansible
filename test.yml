@@ -1,0 +1,82 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: update
+    pacman:
+      update_cache: yes
+      upgrade: yes
+
+  - name: install packages
+    package:
+      name:
+        - noto-fonts
+        - pipewire
+        - pipewire-pulse
+        - wireplumber
+        - plasma-meta
+        - xorg-server
+        - sddm
+        - zsh
+        - zsh-autosuggestions
+        - zsh-completions
+        - zsh-syntax-highlighting
+        - zsh-theme-powerlevel10k
+        - yarn
+        - npm
+        - vim
+        - lutris
+        - steam
+        - element
+        - mesa
+        - maven
+        - openvpn
+        - vulkan-intel
+        - bluez
+        - clamav
+        - kcm-wacomtablet
+        - electron16
+        - flameshot
+        - flatpak
+        - helvum
+        - intel-ucode
+        - jre-openjdk
+        - networkmanager
+        - neofetch
+        - nvidia-utils
+        - os-prober
+        - p7zip
+        - rsync
+        - ufw
+        - vlc
+        - efibootmgr
+        - xournalpp
+        - firefox
+
+  - name: install yay
+    kewlfft.aur.aur:
+      name: yay
+      use: makepkg
+      state: present
+
+  - name: AUR packages
+    kewlfft.aur.aur:
+      use: yay
+      name:
+        - teams-for-linux
+        - kalendar-git
+        - libinput-gestures
+
+  - name: flat packages
+    community.general.flatpak:
+      name:
+        - com.spotify.Client
+        - org.godotengine.Godot
+        - com.mojang.Minecraft
+        - org.gimp.GIMP
+        - org.kde.kdenlive
+
+
+

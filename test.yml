@@ -78,5 +78,21 @@
         - org.gimp.GIMP
         - org.kde.kdenlive
 
+  - name: copy config files
+    copy: src={{ item.src }} dest={{ item.dest }}
+      #owner: root
+      #group: root
+      #mode: u=rw g=rw o=r
+    with_items:
+      - { src: '/mnt/share/config/sudoers', dest: '/etc/sudoers' }
+      - { src: '/mnt/share/config/us-gurrer', dest: '/usr/share/X11/xkb/symbols/us-gurrer' }
+      - { src: '/mnt/share/config/evdev.xml', dest: '/usr/share/X11/xkb/rules/evdev.xml' }
 
-
+  - name: copy scripts
+    copy: src={{ item.src }} dest={{ item.dest }}
+     # owner: root
+     # group: root
+     # mode: u=rwx g=rwx o=r
+    with_items:
+      - { src: '/mnt/share/config/90-sync.sh', dest: '/etc/NetworkManager/dispatcher.d/90-sync.sh' }
+      - { src: '/mnt/share/config/90-down.sh', dest: '/etc/NetworkManager/dispatcher.d/pre-down.d/90-down.sh' }

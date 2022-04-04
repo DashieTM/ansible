@@ -24,6 +24,8 @@
         - noto-fonts
         - pipewire
         - pipewire-pulse
+        - pipewire-jack
+        - pipewire-alsa
         - wireplumber
         - plasma-meta
         - xorg-server
@@ -110,7 +112,13 @@
       - { src: '/mnt/share/config/kwinrulesrc', dest: '/home/dashie/.config/kwinrulesrc' }
       - { src: '/mnt/share/config/kxkbrc', dest: '/home/dashie/.config/kxkbrc' }
       - { src: '/mnt/share/config/ktimezonedrc', dest: '/home/dashie/.config/ktimezonedrc'}
-
+      - { src: '/mnt/share/config/bismuth_config.kfg', dest: '/usr/share/config.kcfg/bismuth_config.kcfg' }
+      - { src: '/mnt/share/config/flameshot.ini', dest: '/home/dashie/.config/flameshot/flameshot.ini' }
+      - { src: '/mnt/share/config/dolphinrc', dest: '/home/dashie/.config/dolphinrc' }
+      - { src: '/var/lib/flatpak/app/com.spotify.Client/current/active/files/share/applications/com.spotify.Client.desktop', dest: '/home/dashie/.config/autostart/com.spotify.Client.desktop' }
+      - { src: '/usr/share/applications/io.element.Element.desktop', dest: '/home/share/.config/autostart/io.element.Element.desktop' }
+      - { src: '/usr/share/applications/libinput-gestures.desktop', dest: '/home/share/.config/autostart/libinput-gestures.desktop' }
+      - { src: '/usr/share/applications/firefox.desktop', dest: '/home/share/.config/autostart/firefox.desktop' }
 
   - name: copy scripts
     copy: src={{ item.src }} dest={{ item.dest }}

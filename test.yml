@@ -4,6 +4,15 @@
   become: true
 
   tasks:
+
+  - name: enablemultilib
+    copy: src={{ item.src }} dest={{ item.dest }}
+      #owner: root
+      #group: root
+      #mode: u=rw g=rw o=r
+    with_items:
+       - { src: '/mnt/share/config/pacman.conf', dest: '/etc/pacman.conf' }
+  
   - name: update
     pacman:
       update_cache: yes
@@ -54,6 +63,7 @@
         - efibootmgr
         - xournalpp
         - firefox
+        - packagekit-qt5
 
   - name: install yay
     kewlfft.aur.aur:
@@ -68,6 +78,8 @@
         - teams-for-linux
         - kalendar-git
         - libinput-gestures
+        - kwin-bismuth
+        - kde-rounded-corners
 
   - name: flat packages
     community.general.flatpak:
@@ -87,6 +99,18 @@
       - { src: '/mnt/share/config/sudoers', dest: '/etc/sudoers' }
       - { src: '/mnt/share/config/us-gurrer', dest: '/usr/share/X11/xkb/symbols/us-gurrer' }
       - { src: '/mnt/share/config/evdev.xml', dest: '/usr/share/X11/xkb/rules/evdev.xml' }
+      - { src: '/mnt/share/config/.zshrc', dest: '/home/dashie/.zshrc' }
+      - { src: '/mnt/share/config/libinput-gestures.conf', dest: '/home/dashie/.config/libinput-gestures.conf' }
+      - { src: '/mnt/share/config/khotkeysrc', dest: '/home/dashie/.config/khotkeysrc' }
+      - { src: '/mnt/share/config/kglobalshortcutsrc', dest: '/home/dashie/.config/kglobalshortcutsrc' }
+      - { src: '/mnt/share/Pictures/birblux.png', dest : /home/dashie/Pictures/birblus.png }
+      - { src: '/mnt/share/config/plasmarc', dest: '/home/dashie/.config/plasmarc' }
+      - { src: '/mnt/share/config/plasmashellrc', dest: '/home/dashie/.config/plasmashellrc' }
+      - { src: '/mnt/share/config/kwinrc', dest: '/home/dashie/.config/kwinrc' }
+      - { src: '/mnt/share/config/kwinrulesrc', dest: '/home/dashie/.config/kwinrulesrc' }
+      - { src: '/mnt/share/config/kxkbrc', dest: '/home/dashie/.config/kxkbrc' }
+      - { src: '/mnt/share/config/ktimezonedrc', dest: '/home/dashie/.config/ktimezonedrc'}
+
 
   - name: copy scripts
     copy: src={{ item.src }} dest={{ item.dest }}

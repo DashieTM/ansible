@@ -21,6 +21,8 @@
   - name: install packages
     package:
       name:
+        - dkms
+        - linux-zen
         - noto-fonts
         - pipewire
         - pipewire-pulse

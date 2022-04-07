@@ -5,7 +5,14 @@
 
   tasks:
 
-  - name: enablemultilib
+  - name:
+    ansible.builtin.command: "{{ item }}"
+    with_items:
+      - pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+      - pacman-key --lsign-key FBA220DFC880C036
+      - pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
+  - name: changepacmanconf
     copy: src={{ item.src }} dest={{ item.dest }}
       #owner: root
       #group: root
@@ -68,22 +75,18 @@
         - xournalpp
         - firefox
         - packagekit-qt5
-
-  - name: install yay
-    kewlfft.aur.aur:
-      name: yay
-      use: makepkg
-      state: present
-
-  - name: AUR packages
-    kewlfft.aur.aur:
-      use: yay
-      name:
-        - teams-for-linux
         - kalendar-git
         - libinput-gestures
         - kwin-bismuth
         - kde-rounded-corners
+        - yay
+
+  #- name: AUR packages
+  #  kewlfft.aur.aur:
+  #    use: yay
+  #    name:
+      
+
 
   - name: flat packages
     community.general.flatpak:

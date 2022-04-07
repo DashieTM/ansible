@@ -14,9 +14,6 @@
 
   - name: changepacmanconf
     copy: src={{ item.src }} dest={{ item.dest }}
-      #owner: root
-      #group: root
-      #mode: u=rw g=rw o=r
     with_items:
        - { src: '/mnt/share/config/pacman.conf', dest: '/etc/pacman.conf' }
   
@@ -44,31 +41,23 @@
         - zsh-completions
         - zsh-syntax-highlighting
         - zsh-theme-powerlevel10k
-        - yarn
-        - npm
-        - vim
         - lutris
         - steam
         - element
-        - mesa
-        - maven
         - openvpn
-        - vulkan-intel
+        - nvidia-dkms
+        - nvidia-utils
         - bluez
         - clamav
         - kcm-wacomtablet
-        - electron16
         - flameshot
         - flatpak
         - helvum
-        - intel-ucode
-        - jre-openjdk
+        - amd-ucode
         - networkmanager
         - neofetch
-        - nvidia-utils
         - os-prober
         - p7zip
-        - rsync
         - ufw
         - vlc
         - efibootmgr
@@ -76,16 +65,7 @@
         - firefox
         - packagekit-qt5
         - kalendar-git
-        - libinput-gestures
-        - kwin-bismuth
-        - kde-rounded-corners
-        - yay
-
-  #- name: AUR packages
-  #  kewlfft.aur.aur:
-  #    use: yay
-  #    name:
-      
+        - yay      
 
 
   - name: flat packages
@@ -96,40 +76,3 @@
         - com.mojang.Minecraft
         - org.gimp.GIMP
         - org.kde.kdenlive
-
-  - name: copy config files
-    copy: src={{ item.src }} dest={{ item.dest }}
-      #owner: root
-      #group: root
-      #mode: u=rw g=rw o=r
-    with_items:
-      - { src: '/mnt/share/config/sudoers', dest: '/etc/sudoers' }
-      - { src: '/mnt/share/config/us-gurrer', dest: '/usr/share/X11/xkb/symbols/us-gurrer' }
-      - { src: '/mnt/share/config/evdev.xml', dest: '/usr/share/X11/xkb/rules/evdev.xml' }
-      - { src: '/mnt/share/config/.zshrc', dest: '/home/dashie/.zshrc' }
-      - { src: '/mnt/share/config/libinput-gestures.conf', dest: '/home/dashie/.config/libinput-gestures.conf' }
-      - { src: '/mnt/share/config/khotkeysrc', dest: '/home/dashie/.config/khotkeysrc' }
-      - { src: '/mnt/share/config/kglobalshortcutsrc', dest: '/home/dashie/.config/kglobalshortcutsrc' }
-      - { src: '/mnt/share/Pictures/birblux.png', dest : /home/dashie/Pictures/birblus.png }
-      - { src: '/mnt/share/config/plasmarc', dest: '/home/dashie/.config/plasmarc' }
-      - { src: '/mnt/share/config/plasmashellrc', dest: '/home/dashie/.config/plasmashellrc' }
-      - { src: '/mnt/share/config/kwinrc', dest: '/home/dashie/.config/kwinrc' }
-      - { src: '/mnt/share/config/kwinrulesrc', dest: '/home/dashie/.config/kwinrulesrc' }
-      - { src: '/mnt/share/config/kxkbrc', dest: '/home/dashie/.config/kxkbrc' }
-      - { src: '/mnt/share/config/ktimezonedrc', dest: '/home/dashie/.config/ktimezonedrc'}
-      - { src: '/mnt/share/config/bismuth_config.kcfg', dest: '/usr/share/config.kcfg/bismuth_config.kcfg' }
-      - { src: '/mnt/share/config/flameshot.ini', dest: '/home/dashie/.config/flameshot/flameshot.ini' }
-      - { src: '/mnt/share/config/dolphinrc', dest: '/home/dashie/.config/dolphinrc' }
-      - { src: '/var/lib/flatpak/app/com.spotify.Client/current/active/files/share/applications/com.spotify.Client.desktop', dest: '/home/dashie/.config/autostart/com.spotify.Client.desktop' }
-      - { src: '/usr/share/applications/io.element.Element.desktop', dest: '/home/share/.config/autostart/io.element.Element.desktop' }
-      - { src: '/usr/share/applications/libinput-gestures.desktop', dest: '/home/share/.config/autostart/libinput-gestures.desktop' }
-      - { src: '/usr/share/applications/firefox.desktop', dest: '/home/share/.config/autostart/firefox.desktop' }
-
-  - name: copy scripts
-    copy: src={{ item.src }} dest={{ item.dest }}
-     # owner: root
-     # group: root
-     # mode: u=rwx g=rwx o=r
-    with_items:
-      - { src: '/mnt/share/config/90-sync.sh', dest: '/etc/NetworkManager/dispatcher.d/90-sync.sh' }
-      - { src: '/mnt/share/config/90-down.sh', dest: '/etc/NetworkManager/dispatcher.d/pre-down.d/90-down.sh' }

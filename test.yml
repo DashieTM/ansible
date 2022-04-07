@@ -15,7 +15,7 @@
   - name: changepacmanconf
     copy: src={{ item.src }} dest={{ item.dest }}
     with_items:
-       - { src: '/gits/ansible/pacman.conf', dest: '/etc/pacman.conf' }
+       - { src: '~/gits/ansible/pacman.conf', dest: '/etc/pacman.conf' }
   
   - name: update
     pacman:

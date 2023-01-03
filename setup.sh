@@ -1,15 +1,15 @@
 for var in "$@"
 do
-if [ "$1" = "nvidia" ]; then
+if [ "$var" = "nvidia" ]; then
 fi
 
-if [ "$1" = "amd" ]; then 
+if [ "$var" = "amd" ]; then 
 fi
 
-if [ "$1" = "intel" ]; then 
+if [ "$var" = "intel" ]; then 
 fi
 
-if [ "$1" = "gaming" ]; then 
+if [ "$var" = "gaming" ]; then 
 fi
 done
 

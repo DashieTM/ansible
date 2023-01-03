@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+
+  - name: intel
+    package:
+      name:
+        - vulkan-intel
+        - intel-ucode
+        - intel-media-driver
+        - lib32-vulkan-intel

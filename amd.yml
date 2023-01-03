@@ -1,0 +1,12 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+
+  - name: amd
+    package:
+      name:
+        - vulkan-radeon
+        - lib32-vulkan-radeon
+        - amd-ucode

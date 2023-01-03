@@ -1,0 +1,99 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+
+  - name: changepacmanconf
+    copy: src={{ item.src }} dest={{ item.dest }}
+      #owner: root
+      #group: root
+      #mode: u=rw g=rw o=r
+    with_items:
+       - { src: './pacman.conf', dest: '/etc/pacman.conf' }
+  
+  - name: update
+    pacman:
+      update_cache: yes
+      upgrade: yes
+
+  - name: install base packages
+    package:
+      name:
+        - base-devel
+        - dkms
+        - linux-zen
+        - noto-fonts
+        - pipewire
+        - pipewire-pulse
+        - pipewire-jack
+        - pipewire-alsa
+        - wireplumber
+        - gdm
+        - zsh
+        - zsh-autosuggestions
+        - zsh-completions
+        - zsh-syntax-highlighting
+        - zsh-theme-powerlevel10k
+        - yarn
+        - npm
+        - neovim
+        - mesa
+        - openvpn
+        - bluez
+        - blueman
+        - clamav
+        - flatpak
+        - helvum
+        - networkmanager
+        - neofetch
+        - os-prober
+        - rsync
+        - ufw
+        - mpv
+        - efibootmgr
+        - xournalpp
+        - firefox
+        - kdenlive
+        - krita
+        - blender
+        - qt5ct
+        - qt6ct 
+        - adwaita-qt5
+        - adwaita-qt6
+        - breeze
+        - nextcloud-client
+        - rustup
+        - cargo
+        - wl-clipboard
+        - wofi
+        - wayland
+        - ttc-iosevka
+        - ttf-icomoon-feather
+        - ttf-monofur
+        - texlive-core
+        - texlive-fontsextra
+        - texlive-formatsextra
+        - texlive-pictures
+        - texlive-latexextra
+        - sushi
+        - swappy
+        - grim
+        - slurp
+        - lsd
+        - evince
+        - kdeconnect
+        - networkmanager
+        - nm-connection-editor
+        - pavucontrol
+
+  - name: flat packages
+    community.general.flatpak:
+      name:
+        - de.shorsh.discord-screenaudio
+        - org.keepassxc.KeePassXC
+        - com.github.tchx84.Flatseal
+        - io.github.seadve.Kooha
+        - io.github.NhekoReborn.Nheko
+    

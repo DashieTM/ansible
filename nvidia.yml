@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+
+  - name: novideo
+    package:
+      name:
+        - nvidia-dkms
+        - egl-wayland
+        - nvidia-utils
+        - lib32-nvidia-utils

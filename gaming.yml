@@ -1,0 +1,21 @@
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+
+  - name: install gaming apps
+    package:
+      name:
+        - steam
+        - lutris
+        - gamemode
+        - pcsx2
+        - gamescope
+
+  
+  - name: flat packages
+    community.general.flatpak:
+      name:
+        - net.davidotek.pupgui2
+        - io.github.Foldex.AdwSteamGtk

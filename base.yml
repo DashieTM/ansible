@@ -25,11 +25,11 @@
         - dkms
         - linux-zen
         - noto-fonts
+        - wireplumber
         - pipewire
         - pipewire-pulse
         - pipewire-jack
         - pipewire-alsa
-        - wireplumber
         - gdm
         - zsh
         - zsh-autosuggestions
@@ -67,7 +67,6 @@
         - rustup
         - cargo
         - wl-clipboard
-        - wofi
         - wayland
         - ttc-iosevka
         - ttf-icomoon-feather
@@ -87,13 +86,21 @@
         - networkmanager
         - nm-connection-editor
         - pavucontrol
+        - copyq
+        - deno 
+        - ripgrep
+        - fd 
+        - nheko
+        - keepassxc
+        - tectonic
+        - zoxide
+        - fish
 
   - name: flat packages
     community.general.flatpak:
       name:
-        - de.shorsh.discord-screenaudio
-        - org.keepassxc.KeePassXC
         - com.github.tchx84.Flatseal
-        - io.github.seadve.Kooha
-        - io.github.NhekoReborn.Nheko
+        - de.shorsh.discord-screenaudio
+        - com.brave.Browser
+        - org.gtk.Gtk3theme.adw-gtk3
     
